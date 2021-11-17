@@ -9,12 +9,16 @@ using namespace std;
 
 int main()
 {
-	int n;
+	setlocale(LC_ALL, "RUSSIAN");
+	string filename;
+	cout << "Введите имя файла: \n";
+	cin >> filename;
 	vector<vector<int>> a;
-	ifstream stream("test1.txt");
+	ifstream stream(filename);
 	string tempLine;
 	string tempChar;
 	getline(stream, tempLine);
+	int n;
 	n = stoi(tempLine);
 	while (getline(stream, tempLine))
 	{
@@ -52,9 +56,8 @@ int main()
 		}
 	}
 
+	cout << "Введите вершины, между которыми нужно найти максимальный путь: \n";
 	int v1, v2;
 	cin >> v1 >> v2;
-	v1--;
-	v2--;
-	cout << abs(a[v1][v2]);
+	cout << "Максимальный путь между вершинами " << v1 << " и " << v2 << " равен: " << abs(a[v1 - 1][v2 - 1]);
 }
